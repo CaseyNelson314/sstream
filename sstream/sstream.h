@@ -27,8 +27,8 @@ class sstream {
 extern sstream sout;
 
 /**
- * @brief バッファクリア
- */
+   @brief バッファクリア
+*/
 void flush() {
   streambuf = "";
 }

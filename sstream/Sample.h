@@ -1,14 +1,11 @@
 #include "sstream.h"
 
 class Sample {
-    int integer;
+    const int integer;
   public:
-
     Sample(int integer): integer(integer) {}
-    
-    friend std::sstream& operator<<(std::sstream& ss, Sample out) {
-      ss << out.integer;
+    friend std::sstream& operator<<(std::sstream& ss, const Sample& input) noexcept {
+      ss << input.integer;
       return ss;
     }
-    
 };

@@ -4,16 +4,18 @@
        @date   2022/06/29
 */
 
+#pragma once
+
 namespace std {
 
-String streambuf = "";
+static String streambuf;  // stream buffer
 
 class sstream {
   public:
     // insertion number
     template<class T>
     friend sstream& operator<<(sstream &sstrm, T out) {
-      streambuf += out;
+      streambuf += out;  // stream挿入
       return sstrm;
     }
 
@@ -22,40 +24,24 @@ class sstream {
       f();
       return sstrm;
     }
+    
 };
 
 extern sstream sout;
 
-/**
- * @brief バッファクリア
- */
 void flush() {
-  streambuf = "";
+  streambuf = "";  // baffer clear
 }
-
-/**
-   @brief 改行コードを挿入し出力
-   バッファをクリア
-*/
 void endl() {
   Serial.println(streambuf);
   flush();
 }
-
-/**
-   @brief 出力
-   バッファをクリア
-*/
 void end() {
   Serial.print(streambuf);
   flush();
 }
-
-/**
-   @brief tab挿入
-*/
 void tab() {
-  streambuf += '\t';
+  streambuf += '\t';  // stream挿入
 }
 
 
